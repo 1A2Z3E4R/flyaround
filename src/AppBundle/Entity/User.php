@@ -18,7 +18,7 @@ class User
 
     public function __toString()
     {
-        return$this->firstName .' ' .$this->lastName;
+        return $this->firstName .' ' .$this->lastName;
     }
 
     /**
