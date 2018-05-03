@@ -35,7 +35,7 @@ class ReviewType extends AbstractType
                 'class' => 'AppBundle\Entity\User',
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('u')
-                        ->orderBy('u.lastname', 'ASC');
+                        ->orderBy('u.lastName', 'ASC');
                 },
                 'choice_label' => 'lastName'))
             ->add('reviewAuthor');
