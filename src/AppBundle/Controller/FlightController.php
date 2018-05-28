@@ -65,7 +65,7 @@ class FlightController extends Controller
      * @Route("/{id}", name="flight_show")
      * @Method("GET")
      */
-    public function showAction(Flight $flight, FlightInfo $flightInfo, PlaneModel $planeModel)
+    public function showAction(Flight $flight, FlightInfo $flightInfo)
     {
         $deleteForm = $this->createDeleteForm($flight);
 
@@ -76,15 +76,7 @@ class FlightController extends Controller
             $flight->getArrival()->getLongitude()
         );
 
-        $time = $flightInfo->getTime(
-            $planeModel->getCruiseSpeed(),
-            $flightInfo->getDistance(
-                $flight->getDeparture()->getLatitude(),
-                $flight->getDeparture()->getLongitude(),
-                $flight->getArrival()->getLatitude(),
-                $flight->getArrival()->getLongitude()
-            )
-        );
+        $time = $flightInfo->getTime($flight->getPlane()->getCruiseSpeed(), $distance);
 
         return $this->render('flight/show.html.twig', array(
             'flight' => $flight,
