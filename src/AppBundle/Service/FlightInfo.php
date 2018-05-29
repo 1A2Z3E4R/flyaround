@@ -64,6 +64,12 @@ class FlightInfo
 
     public function getTime($cruiseSpeed, $distance)
     {
-        return ($distance / $cruiseSpeed) * 60;
+        $seconds = ($distance / $cruiseSpeed) * 3600;
+
+        $hours = floor($seconds / 3600);
+        $mins = floor($seconds / 60 % 60);
+        $secs = floor($seconds % 60);
+
+        return $timeFormat = sprintf('%02d:%02d:%02d', $hours, $mins, $secs);
     }
 }
